@@ -1,17 +1,17 @@
 package bronze5
 
 import java.util.Scanner
+import kotlin.math.pow
 
 // https://www.acmicpc.net/problem/1297
 fun main() = with(Scanner(System.`in`)) {
-    val D = nextInt()
-    val H = nextInt()
-    val W = nextInt()
-// 대각선 길이 h^2 + w^2 = D^2
+    val D = nextInt().toDouble()
+    val H = nextInt().toDouble()
+    val W = nextInt().toDouble()
 
-    val dd = Math.pow(D.toDouble(), 2.0) / 25
+    val ratio = Math.sqrt((D.pow(2.0)) / (H.pow(2.0) + W.pow(2.0)))
 
-    val height = Math.sqrt(dd * H)
-    val width = Math.sqrt(dd * W)
-    println("$height $width")
+    val height = ratio * H
+    val width = ratio * W
+    println("${height.toInt()} ${width.toInt()}")
 }
